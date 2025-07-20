@@ -44,23 +44,24 @@ function App() {
           {loading ? 'Summarizing...' : 'Summarize'}
         </button>
 
-        {summary && (
-          <div className="mt-6">
-            <h2 className="text-lg font-semibold">Summary:</h2>
-            <p className="text-gray-800">{summary}</p>
-          </div>
-        )}
+        {summary && typeof summary === 'string' && summary.length > 0 && (
+  <div className="mt-6">
+    <h2 className="text-lg font-semibold">Summary:</h2>
+    <p className="text-gray-800">{summary}</p>
+  </div>
+)}
 
-        {points.length > 0 && (
-          <div className="mt-4">
-            <h2 className="text-lg font-semibold">Key Points:</h2>
-            <ul className="list-disc ml-6">
-              {points.map((pt, i) => (
-                <li key={i}>{pt}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+{Array.isArray(points) && points.length > 0 && (
+  <div className="mt-4">
+    <h2 className="text-lg font-semibold">Key Points:</h2>
+    <ul className="list-disc ml-6">
+      {points.map((pt, i) => (
+        <li key={i}>{pt}</li>
+      ))}
+    </ul>
+  </div>
+)}
+
       </div>
     </div>
   );
